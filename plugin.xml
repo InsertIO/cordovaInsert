@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="io.cordova-insert" version="0.1">
+    <name>Insert SDK for Cordova</name>
+    <description>Adds Insert's SDK to Cordova projects</description>
+    <author>Netanel Rabinowitz</author>
+    <keywords>insert</keywords>
+    <engines>
+        <engine name="cordova" version=">=3.7.0" />
+    </engines>
+    <js-module src="www/Insert.js" name="Insert">
+    <clobbers target="window.plugins.Insert" />
+    </js-module>
+    <!-- <dependency id="cordova-isnertsdk"/> -->
+
+    <platform name="android">
+
+    </platform>
+
+    <platform name="ios">
+      <config-file target="config.xml" parent="/*">
+          <feature name="Insert">
+              <param name="ios-package" value="CDVInsert" />
+          </feature>
+      </config-file>
+      <header-file src="src/ios/CDVInsert.h" />
+      <source-file src="src/ios/CDVInsert.m" />
+    </platform>
+
+</plugin>
