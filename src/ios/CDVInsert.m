@@ -18,6 +18,8 @@
 
 
 -(void)eventOccured:(CDVInvokedUrlCommand *)command {
+    vCDVPluginResult *pluginResult;
+    NSString *callbackId = command.callbackId;
     if (command.arguments.count >= 2) {
         NSString *actionName = [command argumentArIndex:0];
         NSDictionary *params = [command argumentArIndex: 1];
