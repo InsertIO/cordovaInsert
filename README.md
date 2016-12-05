@@ -8,7 +8,7 @@ cordova create hallo com.example.hello HelloWorld
 
 cd hallo
 
-cordova platform add iOS
+cordova platform add ios
 cordova platform add android
 ```
 
