@@ -28,6 +28,10 @@ cordova plugin add https://github.com/InsertIO/cordovaInsert.git
 ```
 
 > Android:
+- For android we use the gradle plugin for cordova so all you have to do is add the plugin via the cordova cli
+```
+cordova plugin add https://github.com/InsertIO/cordovaInsert.git
+```
 
 
 
