@@ -5,6 +5,7 @@
     <name>Insert SDK for Cordova</name>
     <description>Adds Insert's SDK to Cordova projects</description>
     <author>Netanel Rabinowitz</author>
+    <license>Apache 2.0</license>
     <keywords>insert</keywords>
     <engines>
         <engine name="cordova" version=">=3.7.0" />
