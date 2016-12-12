@@ -14,13 +14,13 @@ InsertExport.dismissVisibleInserts = function(successCallback, failureCallback) 
         );
 }
 
-InsertExport.eventOccured = function(event, paramsObject, successCallback, failureCallback) {
+InsertExport.eventOccurred = function(event, paramsObject, successCallback, failureCallback) {
   if (typeof event === 'string' && typeof paramsObject === 'object'){
     cordova.exec(
       successCallback,
       failureCallback,
       'Insert',
-      'eventOccured',
+      'eventOccurred',
       [event, paramsObject]
     );
   } else {

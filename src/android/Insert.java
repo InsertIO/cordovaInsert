@@ -5,6 +5,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import static sdk.insert.io.Insert.dismissVisibleInserts;
+import static sdk.insert.io.Insert.eventOccurred;
 
 public class Insert extends CordovaPlugin {
 	@Override
@@ -13,8 +14,8 @@ public class Insert extends CordovaPlugin {
 			case "dismissVisibleInserts":
 				dismissVisibleInserts();
 				break;
-			case "eventOccured":
-				// eventOccured(inputs.getString(0), inputs.getJSONObject(0));
+			case "eventOccurred":
+				eventOccurred("customEvent", null);
 				break;
 			default:
 				break;
