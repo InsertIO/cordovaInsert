@@ -17,13 +17,13 @@
 }
 
 
--(void)eventOccured:(CDVInvokedUrlCommand *)command {
+-(void)eventOccurred:(CDVInvokedUrlCommand *)command {
     CDVPluginResult *pluginResult;
     NSString *callbackId = command.callbackId;
     if (command.arguments.count >= 2) {
         NSString *actionName = command.arguments[0];
         NSDictionary *params = command.arguments[1];
-        [[InsertManager sharedManager] eventOccured:actionName parameters:params];
+        [[InsertManager sharedManager] eventOccurred:actionName parameters:params];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
     } else {
         

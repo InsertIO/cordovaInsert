@@ -5,5 +5,5 @@
 
 @interface CDVInsert : CDVPlugin
 - (void)dismissVisibleInserts:(CDVInvokedUrlCommand *)command;
-- (void)eventOccured:(CDVInvokedUrlCommand *)command;
+- (void)eventOccurred:(CDVInvokedUrlCommand *)command;
 @end
