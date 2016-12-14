@@ -39,8 +39,8 @@ Verify
 
 ```
 window.plugins.Insert.eventOccured('userLogin' {
-   provider : 'xxx',
-   timeSinceLastSession: 'xxxxxxxx'
+   key1 : 'value1',
+   key2 : 'value2'
  });
 
 ```
