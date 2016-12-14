@@ -1,12 +1,11 @@
 # Cordova Plugin For Insert Framework
 
-Purpose
-=======
+
 The purpose of this code is to allow hybrid applications to use the native insert SDK. Using the SDK, a hybrid app can trigger events within the app thus triggering inserts.
 
 
-Adding insert to a Cordova app
-==============================
+Adding the Insert SDK to a Cordova app
+======================================
 * Create your app:
 
 ```
@@ -54,5 +53,5 @@ window.plugins.Insert.eventOccured('userLogin' {
 
 License
 =======
-This Cordova plug-in is licensed under the Apache 2 open source license
+The Insert Cordova plug-in is licensed under the Apache 2 open source license
 
