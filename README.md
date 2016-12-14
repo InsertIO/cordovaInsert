@@ -2,6 +2,7 @@
 
 
 The purpose of this code is to allow hybrid applications to use the native insert SDK. Using the SDK, a hybrid app can trigger events within the app thus triggering inserts.
+Register for an insert account at https://insert.io
 
 
 Adding the Insert SDK to a Cordova app
@@ -17,31 +18,22 @@ cordova platform add ios
 cordova platform add android
 ```
 
+* Add the Insert SDK
+Open the Insert console and create an app.  then follow the installation instructions to integrate the SDK into your app.
+Make sure that once integrated, you see a success message in the Android Studio or XCode logs.
+
 * Add The Plugin:
 
-> iOS:
-- Download the insert framework from this link
-- Unzip to extract the Insert framework: InsertFramework.framework
-- Copy InsertFramwork.framework to your project’s Frameworks directory by dragging the framework to your project. When prompted, check the option to“Copy items if needed”. The .xcworkspace file located in /.../< yourApp >/platforms/ios
-- Under Build Phases | Link Binaries With Libraries, verify that InsertFramework.framework is listed
-Under  General | Embedded Binaries, press the + sign and add InsertFramework.framework
-- Under Build Settings | Build Options, verify that the flag  “Enable Bitcode” is set to No
-- Under General | Deployment Target verify that deployment target is set for 8.0 or later. Insert only supports iOS 8 or later.
-- add the plugin itself:  
 ```
 cordova plugin add https://github.com/InsertIO/cordovaInsert.git
 ```
 
-> Android:
-- For android we use the gradle plugin for cordova so all you have to do is add the plugin via the cordova cli
-```
-cordova plugin add https://github.com/InsertIO/cordovaInsert.git
-```
+Verify
+======
+- Within the Insert console, go to your app and create a custom event (say "userLogin"). 
+- Create a new insert and under the 'Triggers' tab create a trigger type of custom event. Select "userLogin" as the event.
+- In your javascript code use the following code to trigger the insert:
 
-
-
-
-Example code:
 
 ```
 window.plugins.Insert.eventOccured('userLogin' {
