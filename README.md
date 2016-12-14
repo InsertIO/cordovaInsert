@@ -20,6 +20,7 @@ cordova platform add android
 ```
 
 * Add the Insert SDK
+
 Open the Insert console and create an app.  then follow the installation instructions to integrate the SDK into your app.
 Make sure that once integrated, you see a success message in the Android Studio or XCode logs.
 
@@ -31,8 +32,8 @@ cordova plugin add https://github.com/InsertIO/cordovaInsert.git
 
 Verify
 ======
-- Within the Insert console, go to your app and create a custom event (say "userLogin"). 
-- Create a new insert and under the 'Triggers' tab create a trigger type of custom event. Select "userLogin" as the event.
+- Within the Insert console go to your app and create a custom event (say "userLogin"). 
+- Create a new insert and under the Triggers tab create a trigger type of custom event. Select "userLogin" as the event.
 - In your javascript code use the following code to trigger the insert:
 
 
@@ -46,5 +47,5 @@ window.plugins.Insert.eventOccured('userLogin' {
 
 License
 =======
-The Insert Cordova plug-in is licensed under the Apache 2 open source license
+The Insert Cordova plug-in is licensed under the Apache 2 license
 
