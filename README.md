@@ -1,12 +1,15 @@
 # Cordova Plugin For Insert Framework
 
+The purpose of this code is to allow hybrid applications to use the native insert SDK. Using the SDK, a hybrid app can trigger events within the app thus triggering inserts.
+
+
 
 * Create your app:
 
 ```
-cordova create hallo com.example.hello HelloWorld
+cordova create hello com.example.hello HelloWorld
 
-cd hallo
+cd hello
 
 cordova platform add ios
 cordova platform add android
