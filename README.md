@@ -38,7 +38,7 @@ Verify
 
 
 ```
-window.plugins.Insert.eventOccured('userLogin' {
+window.plugins.Insert.eventOccurred('userLogin' {
    key1 : 'value1',
    key2 : 'value2'
  });
