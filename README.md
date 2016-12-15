@@ -8,7 +8,7 @@ Register for an insert account at https://insert.io
 
 Adding the Insert SDK to a Cordova app
 ======================================
-* Create your app:
+* To create a new Cordova app (if needed):
 
 ```
 cordova create hello com.example.hello HelloWorld
