@@ -25,7 +25,7 @@ InsertExport.eventOccurred = function(event, paramsObject, successCallback, fail
     );
   } else {
     if (typeof failureCallback === 'function'){
-      failureCallback('type missmatch: event should be of type string and paramsObject shold be an object')
+      failureCallback('type missmatch: event should be of type string and paramsObject should be an object')
     }
   }
 }
