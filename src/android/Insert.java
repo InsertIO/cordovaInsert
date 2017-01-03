@@ -10,15 +10,21 @@ import static sdk.insert.io.Insert.eventOccurred;
 public class Insert extends CordovaPlugin {
 	@Override
 	public boolean execute(String action, JSONArray inputs, CallbackContext callbackContext) throws JSONException {
-		switch (action) {
-			case "dismissVisibleInserts":
-				dismissVisibleInserts();
-				break;
-			case "eventOccurred":
-				eventOccurred("customEvent", null);
-				break;
-			default:
-				break;
+		if (action.equals("dismissVisibleInserts")) {
+			dismissVisibleInserts();
+		} else if (action.equals("eventOccurred")) {
+			if (inputs.length() >= 2) {
+			    Map<String, String> mapData = new HashMap<String, String>();
+			    JSONObject jsonObject = (JSONObject) inputs.get(1);
+			    Iterator<String> keysItr = jsonObject.keys();
+			        while(keysItr.hasNext()) {
+			            String key = keysItr.next();
+			            String value = jsonObject.get(key).toString();
+			            mapData.put(key, value);
+			        }
+				eventOccurred(inputs.get(0).toString(), mapData);
+			}
+		} else {
 		}
 		return true;
 	}
