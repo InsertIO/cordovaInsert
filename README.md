@@ -18,17 +18,17 @@ cd hello
 cordova platform add ios
 cordova platform add android
 ```
+* Add The Plugin:
+
+```
+cordova plugin add https://github.com/InsertIO/cordovaInsert.git
+```
 
 * Add the Insert SDK
 
 Open the Insert console and create an app.  then follow the installation instructions to integrate the SDK into your app. Specifically, you have to call the InitSDK function on the native part of your app
 Make sure that once integrated, you see a success message in the Android Studio or XCode logs.
 
-* Add The Plugin:
-
-```
-cordova plugin add https://github.com/InsertIO/cordovaInsert.git
-```
 
 Verify
 ======
