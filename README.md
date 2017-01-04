@@ -33,7 +33,7 @@ Make sure that once integrated, you see a success message in the Android Studio 
 How to use
 ==========
 - Within the Insert console go to your app and create a custom event (say "userLogin"). 
-- Create a new insert and under the Triggers tab create a trigger type of custom event. Select "userLogin" as the event.
+- Create a new insert and under the Triggers tab use a trigger type of custom event. Select "userLogin" as the event.
 - In your javascript code use the following code to trigger the insert:
 
 
