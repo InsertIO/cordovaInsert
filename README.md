@@ -18,7 +18,7 @@ cd hello
 cordova platform add ios
 cordova platform add android
 ```
-* Add The Plugin:
+* Add The Insert Plugin:
 
 ```
 cordova plugin add https://github.com/InsertIO/cordovaInsert.git
