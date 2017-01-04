@@ -20,15 +20,26 @@ public class Insert extends CordovaPlugin {
 			dismissVisibleInserts();
 		} else if (action.equals("eventOccurred")) {
 			if (inputs.length() >= 2) {
-			    Map<String, String> mapData = new HashMap<String, String>();
-			    JSONObject jsonObject = (JSONObject) inputs.get(1);
-			    Iterator<String> keysItr = jsonObject.keys();
-			        while(keysItr.hasNext()) {
-			            String key = keysItr.next();
-			            String value = jsonObject.get(key).toString();
-			            mapData.put(key, value);
-			        }
-				eventOccurred(inputs.get(0).toString(), mapData);
+				Map<String, String> mapData = new HashMap<String, String>();
+				JSONObject jsonObject = (JSONObject) inputs.get(1);
+				Iterator<String> keysItr = jsonObject.keys();
+				while(keysItr.hasNext()) {
+					String key = keysItr.next();
+					String value = jsonObject.get(key).toString();
+					mapData.put(key, value);
+				}
+				final Map<String, String> finalMap = mapData;
+				final JSONArray finalInputs = inputs;
+				cordova.getThreadPool().execute(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							eventOccurred(finalInputs.get(0).toString(), finalMap);
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		} else {
 		}
