@@ -20,7 +20,7 @@ cordova platform add android
 ```
 * Add The Insert Plugin:
 
-If you have git installed run command below
+If you have git installed, run:
 ```
 cordova plugin add https://github.com/InsertIO/cordovaInsert.git
 ```
