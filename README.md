@@ -43,10 +43,7 @@ How to use
 
 
 ```
-window.plugins.Insert.eventOccurred('userLogin', {
-   key1 : 'value1',
-   key2 : 'value2'
- });
+window.plugins.Insert.eventOccurred('userLogin', {});
 
 ```
 
