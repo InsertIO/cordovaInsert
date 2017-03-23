@@ -1,0 +1,36 @@
+{
+  "name": "cordova-plugin-insert-io",
+  "version": "1.0.0",
+  "description": "Adds insert.io SDK to Cordova projects",
+  "license": "Apache-2.0",
+  "scripts": {
+    "doc": "jsdoc2md www/Insert.js > api.md",
+    "test": "eslint www/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InsertIO/cordovaInsert.git"
+  },
+  "keywords": [
+    "cordova",
+    "insert",
+    "insert.io",
+    "plugin"
+  ],
+  "author": "Netanel Rabinowitz, Philipp Kursawe",
+  "bugs": {
+    "url": "https://github.com/InsertIO/cordovaInsert/issues"
+  },
+  "homepage": "https://github.com/InsertIO/cordovaInsert#readme",
+  "cordova": {
+    "id": "cordova.plugins.insert.io",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^3.18.0",
+    "jsdoc-to-markdown": "^3.0.0"
+  }
+}
