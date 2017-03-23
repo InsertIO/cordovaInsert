@@ -50,10 +50,10 @@
     NSString *companyName = [self.commandDelegate.settings objectForKey:@"insertcompanyname"];
     
     if (appKey == nil) {
-        return [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"INSERT_IOS_APP_KEY not defined in config.xml"];
+        return [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"IOS_APP_KEY not defined in config.xml"];
     }
     if (companyName == nil) {
-        return [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"INSERT_COMPANY_NAME not defined in config.xml"];
+        return [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"COMPANY_NAME not defined in config.xml"];
     }
     
     NSNotificationCenter * __weak notifyCenter = [NSNotificationCenter defaultCenter];

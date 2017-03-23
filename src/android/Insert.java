@@ -20,7 +20,6 @@ import static sdk.insert.io.Insert.eventOccurred;
 import static sdk.insert.io.Insert.setUserAttributes;
 import static sdk.insert.io.Insert.setUserId;
 
-
 public class Insert extends CordovaPlugin {
     @Override
     public boolean execute(String action, final JSONArray inputs, final CallbackContext callbackContext) throws JSONException {
@@ -29,11 +28,11 @@ public class Insert extends CordovaPlugin {
                 final String appKey = this.preferences.getString("insertappkey", null);
                 final String companyName = this.preferences.getString("insertcompanyname", null);
                 if (appKey == null || appKey.length() == 0) {
-                    callbackContext.error("INSERT_ANDROID_APP_KEY not set in config.xml");
+                    callbackContext.error("ANDROID_APP_KEY not set in config.xml");
                     return true;
                 }
                 if (companyName == null || companyName.length() == 0) {
-                    callbackContext.error("INSERT_COMPANY_NAME not set in config.xml");
+                    callbackContext.error("COMPANY_NAME not set in config.xml");
                     return true;
                 }
 

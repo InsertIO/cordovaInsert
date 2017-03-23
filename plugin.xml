@@ -19,12 +19,11 @@
     </js-module>
 
     <preference name="COMPANY_NAME" />
-    <preference name="ANDROID_APP_KEY" default=""/>
-    <preference name="ANDROID_URL_ID" default="" />
-    <preference name="IOS_APP_KEY" default="" />
-    <preference name="IOS_URL_ID" default="" />
     
     <platform name="android">
+      <preference name="ANDROID_APP_KEY" />
+      <preference name="ANDROID_URL_ID" />
+
       <config-file target="res/xml/config.xml" parent="/*">
         <feature name="Insert">
           <param name="android-package" value="io.insert.cordova.plugin.Insert" />
@@ -62,6 +61,9 @@
     </platform>
 
     <platform name="ios">
+      <preference name="IOS_APP_KEY" />
+      <preference name="IOS_URL_ID" />
+    
       <dependency id="cordova-plugin-cocoapod-support"/>
 
       <pods-config ios-min-version="8.0" use-frameworks="true"/>
