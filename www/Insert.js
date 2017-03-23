@@ -6,9 +6,27 @@
 function ensureStringValues(items) {
   return Object.keys(items).reduce(function(result, key) {
     result[key] = "\"" + items[key].toString() + "\"";
-    return result
+    return result;
   }, {});
 }
+
+/**
+ * Handle insert-* URLs in iOS apps
+ */
+var _handleOpenURL = window.handleOpenURL;
+window.handleOpenURL = function(url) {
+  if (url.indexOf("insert-") === 0) {
+    cordova.exec(
+      null,
+      null,
+      "Insert",
+      "initWithUrl",
+      [url]
+    );
+  } else {
+    _handleOpenURL(url);
+  }
+};
 
 module.exports = {
 
@@ -29,9 +47,9 @@ module.exports = {
    */
   init: function(options, success, error) {
     if (typeof options === "function") {
-      error = success
-      success = options
-      options = null
+      error = success;
+      success = options;
+      options = null;
     }
 
     cordova.exec(
@@ -122,4 +140,4 @@ module.exports = {
       [userId]
     );
   }
-}
+};
