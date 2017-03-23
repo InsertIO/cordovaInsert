@@ -54,7 +54,7 @@ This also shows your `COMPANY_NAME` again.
 
 ### iOS
 
-#### `INSERT_IOS_URL_ID`
+#### `IOS_URL_ID`
 
 You get it from "Step 2: Set a URL Scheme" of the SDK Integration instructions.
 

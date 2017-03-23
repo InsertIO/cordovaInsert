@@ -18,20 +18,18 @@
       <clobbers target="cordova.plugins.InsertIO" />
     </js-module>
 
-    <preference name="INSERT_COMPANY_NAME" />
-    <preference name="INSERT_ANDROID_APP_KEY" default=""/>
-    <preference name="INSERT_IOS_APP_KEY" default="" />
-    <preference name="INSERT_IOS_URL_ID" default="" />
-    <preference name="INSERT_ANDROID_URL_ID" default="" />
-
-    <!-- <dependency id="cordova-isnertsdk"/> -->
-
+    <preference name="COMPANY_NAME" />
+    <preference name="ANDROID_APP_KEY" default=""/>
+    <preference name="ANDROID_URL_ID" default="" />
+    <preference name="IOS_APP_KEY" default="" />
+    <preference name="IOS_URL_ID" default="" />
+    
     <platform name="android">
       <config-file target="res/xml/config.xml" parent="/*">
         <feature name="Insert">
           <param name="android-package" value="io.insert.cordova.plugin.Insert" />
-          <preference name="InsertAppKey" value="$INSERT_ANDROID_APP_KEY" />
-          <preference name="InsertCompanyName" value="$INSERT_COMPANY_NAME" />
+          <preference name="InsertAppKey" value="$ANDROID_APP_KEY" />
+          <preference name="InsertCompanyName" value="$COMPANY_NAME" />
         </feature>
       </config-file>
       <config-file target="AndroidManifest.xml" parent="/manifest">
@@ -44,7 +42,7 @@
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
             <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="insert-$INSERT_ANDROID_URL_ID" />
+            <data android:scheme="insert-$ANDROID_URL_ID" />
           </intent-filter>
           <intent-filter>
             <action android:name="$INSERT_ANDROID_URL_ID" />
@@ -72,8 +70,8 @@
       <config-file target="config.xml" parent="/*">
         <feature name="Insert">
           <param name="ios-package" value="CDVInsert" />
-          <preference name="InsertAppKey" value="$INSERT_IOS_APP_KEY" />
-          <preference name="InsertCompanyName" value="$INSERT_COMPANY_NAME" />
+          <preference name="InsertAppKey" value="$IOS_APP_KEY" />
+          <preference name="InsertCompanyName" value="$COMPANY_NAME" />
         </feature>
       </config-file>
       <config-file target="*-Info.plist" parent="CFBundleURLTypes">
@@ -81,7 +79,7 @@
           <dict>
             <key>CFBundleURLSchemes</key>
             <array>
-              <string>insert-$INSERT_IOS_URL_ID</string>
+              <string>insert-$IOS_URL_ID</string>
             </array>
           </dict>
         </array>
