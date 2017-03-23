@@ -1,38 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+<plugin
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="io.cordova-insert" version="0.1">
-    <name>Insert SDK for Cordova</name>
-    <description>Adds Insert's SDK to Cordova projects</description>
+    id="cordova-plugin-insert-io"
+    version="1.0">
+    <name>insert.io SDK for Cordova</name>
+    <description>Adds insert.io SDK to Cordova projects</description>
     <author>Netanel Rabinowitz</author>
     <license>Apache 2.0</license>
-    <keywords>insert</keywords>
+    <keywords>ecosystem:cordova,cordova,plugin,insert,insertIO,insert.io</keywords>
+
     <engines>
-        <engine name="cordova" version=">=3.7.0" />
+      <engine name="cordova" version=">=3.7.0" />
     </engines>
+
     <js-module src="www/Insert.js" name="Insert">
-    <clobbers target="window.plugins.Insert" />
+      <clobbers target="cordova.plugins.InsertIO" />
     </js-module>
+
+    <preference name="INSERT_COMPANY_NAME" />
+    <preference name="INSERT_ANDROID_APP_KEY" default=""/>
+    <preference name="INSERT_IOS_APP_KEY" default="" />
+    <preference name="INSERT_IOS_URL_ID" default="" />
+    <preference name="INSERT_ANDROID_URL_ID" default="" />
+
     <!-- <dependency id="cordova-isnertsdk"/> -->
 
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Insert">
-                <param name="android-package" value="com.cordova.insert.plugin.Insert"/>
-            </feature>
-        </config-file>
-        <source-file src="src/android/Insert.java" target-dir="src/com/cordova/insert/plugin"/>
-     </platform>
-     
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="Insert">
+          <param name="android-package" value="io.insert.cordova.plugin.Insert" />
+          <preference name="InsertAppKey" value="$INSERT_ANDROID_APP_KEY" />
+          <preference name="InsertCompanyName" value="$INSERT_COMPANY_NAME" />
+        </feature>
+      </config-file>
+      <config-file target="AndroidManifest.xml" parent="/manifest">
+        <uses-permission android:name="android.permission.INTERNET" />
+      </config-file>
+
+      <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <activity android:name="sdk.insert.io.activities.InsertGateActivity" android:launchMode="singleInstance">
+          <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="insert-$INSERT_ANDROID_URL_ID" />
+          </intent-filter>
+          <intent-filter>
+            <action android:name="$INSERT_ANDROID_URL_ID" />
+            <category android:name="android.intent.category.DEFAULT" />
+          </intent-filter>
+        </activity>
+      </config-file>
+
+      <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+        <application android:name="io.insert.cordova.plugin.InsertApplication"></application>
+      </edit-config>
+
+      <source-file src="src/android/Insert.java" target-dir="src/io/insert/cordova/plugin" />
+      <source-file src="src/android/InsertApplication.java" target-dir="src/io/insert/cordova/plugin" />
+
+      <framework src="src/android/insertio.gradle" custom="true" type="gradleReference" />
+    </platform>
 
     <platform name="ios">
+      <dependency id="cordova-plugin-cocoapod-support"/>
+
+      <pods-config ios-min-version="8.0" use-frameworks="true"/>
+      <pod name="Insert" version="1.44.1" />
+
       <config-file target="config.xml" parent="/*">
-          <feature name="Insert">
-              <param name="ios-package" value="CDVInsert" />
-          </feature>
+        <feature name="Insert">
+          <param name="ios-package" value="CDVInsert" />
+          <preference name="InsertAppKey" value="$INSERT_IOS_APP_KEY" />
+          <preference name="InsertCompanyName" value="$INSERT_COMPANY_NAME" />
+        </feature>
+      </config-file>
+      <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+        <array>
+          <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+              <string>insert-$INSERT_IOS_URL_ID</string>
+            </array>
+          </dict>
+        </array>
       </config-file>
       <header-file src="src/ios/CDVInsert.h" />
       <source-file src="src/ios/CDVInsert.m" />
     </platform>
-
 </plugin>

@@ -1,0 +1,27 @@
+ext {
+  maxHeapSize = "2048m"
+}
+
+android {
+    dexOptions {
+        jumboMode = true
+        javaMaxHeapSize "3g"
+    }
+}
+
+// Apply values after project's build-extras.gradle
+cdvPluginPostBuildExtras.add({
+    repositories {
+       maven {
+         url "http://software.insert.io/artifactory/android-sdk-externals"
+       }
+       maven {
+         url "http://software.insert.io/artifactory/android-release"
+       }
+       mavenCentral()
+    }
+    dependencies {
+      compile group:'sdk.insert.io' , name:'insertIO', version:'1.44.44.+', changing:true
+      compile 'com.android.support:multidex:1.0.0'
+    }
+})
