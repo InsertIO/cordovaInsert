@@ -37,21 +37,12 @@ module.exports = {
    * Probably before tearing down the splashscreen when you plan to serve
    * "App Start" triggered Inserts.
    * 
-   * @param {object} [options] - options for the initialisation
-   * @param [options.userAttributes] {object} -
-   * @param [options.userId] {string} - the user id to set before calling the native init
    * @param {function} [success] - called when initialisation succeeded
    * @param {function} [error] - called when initialisation fails
    * @see Insert.setUserAttributes
    * @see Insert.setUserId
    */
-  init: function(options, success, error) {
-    if (typeof options === "function") {
-      error = success;
-      success = options;
-      options = null;
-    }
-
+  init: function(success, error) {
     cordova.exec(
       success,
       error,
