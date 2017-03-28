@@ -57,7 +57,7 @@
       <source-file src="src/android/Insert.java" target-dir="src/io/insert/cordova/plugin" />
       <source-file src="src/android/InsertApplication.java" target-dir="src/io/insert/cordova/plugin" />
 
-      <framework src="src/android/insertio.gradle" custom="true" type="gradleReference" />
+      <framework src="src/android/insert.gradle" custom="true" type="gradleReference" />
     </platform>
 
     <platform name="ios">
