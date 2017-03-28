@@ -28,16 +28,16 @@ This is equal to your `companyname.insert.io` subdomain but you can also find it
 
 ### Android
 
-#### `ANDROID_URL_ID` (Android only)
+#### `ANDROID_URL_ID`
 
 You get it from "Step 2: Manifest file" of the SDK Integration instructions.
 
-`<data android:scheme="insert-hexnumber"/>` use **only** the `hexnumber`
+> `<data android:scheme="insert-hexnumber"/>` use **only** the `hexnumber`
 
 This `hexnumber` is your `ANDROID_URL_ID`.
 
 
-#### `ANDROID_APP_KEY` (Android only)
+#### `ANDROID_APP_KEY`
 
 From Step 3: Add Initialization Code
 
@@ -89,9 +89,14 @@ If git is not installed, download this repository to your machine and run:
 cordova plugin add --save <folder-on-your-machine> --variable COMPANY_NAME="yourcompanyname" ...
 ```
 
-Remember to specify all `--variable` for your platform(s).
+Remember to specify all `--variable` for your platform(s):
 
-You have to specify the `COMPANY_NAME` but can omit ANDROID_??? or IOS_??? keys if you don't have an app for that platform or don't want to use Insert in this app.
+| iOS | Android |
+|-----|---------|
+| `--variable IOS_APP_KEY` | `--variable ANDROID_APP_KEY` |
+| `--variable IOS_URL_ID`  | `--variable ANDROID_URL_ID`  |
+
+You always have to specify the `COMPANY_NAME` but can omit ANDROID_??? or IOS_??? keys if you don't have an app for that platform or don't want to use Insert in this app.
 
 # [API](./api.md)
 
