@@ -44,7 +44,7 @@
             <data android:scheme="insert-$ANDROID_URL_ID" />
           </intent-filter>
           <intent-filter>
-            <action android:name="$INSERT_ANDROID_URL_ID" />
+            <action android:name="$ANDROID_URL_ID" />
             <category android:name="android.intent.category.DEFAULT" />
           </intent-filter>
         </activity>
