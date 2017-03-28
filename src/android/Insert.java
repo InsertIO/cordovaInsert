@@ -61,7 +61,7 @@ public class Insert extends CordovaPlugin {
                         public void run() {
                             try {
                                 eventOccurred(inputs.getString(0), valuesToString(inputs.getJSONObject(1)));
-                                callbackContext.success()
+                                callbackContext.success();
                             } catch (JSONException e) {
                                 callbackContext.error(e.getMessage());
                             }
@@ -70,15 +70,15 @@ public class Insert extends CordovaPlugin {
                 }
             } else if (action.equals("setUserAttributes")) {
                 setUserAttributes(valuesToString(inputs.getJSONObject(0)));
-                callbackContext.success()
+                callbackContext.success();
             } else if (action.equals("setUserId")) {
                 setUserId(inputs.getString(0));
-                callbackContext.success()
+                callbackContext.success();
             } else {
                 return false; // will result in a MethodNotFound error
             }
             return true;
-        } catch (e) {
+        } catch (Exception e) {
             callbackContext.error(e.getMessage());
             return true;
         }
