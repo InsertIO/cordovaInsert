@@ -3,15 +3,18 @@
 ## Insert
 
 * [Insert](#module_Insert)
-    * [.init([options], [success], [error])](#module_Insert.init)
-    * [.dismissVisibleInserts([success], [error])](#module_Insert.dismissVisibleInserts)
-    * [.eventOccurred(event, [params], [success], [error])](#module_Insert.eventOccurred)
-    * [.setUserAttributes(attributes, [success], [error])](#module_Insert.setUserAttributes)
-    * [.setUserId(userId, [success], [error])](#module_Insert.setUserId)
+    * _static_
+        * [.init([success], [error])](#module_Insert.init)
+        * [.dismissVisibleInserts([success], [error])](#module_Insert.dismissVisibleInserts)
+        * [.eventOccurred(event, [params], [success], [error])](#module_Insert.eventOccurred)
+        * [.setUserAttributes(attributes, [success], [error])](#module_Insert.setUserAttributes)
+        * [.setUserId(userId, [success], [error])](#module_Insert.setUserId)
+    * _inner_
+        * [~_handleOpenURL](#module_Insert.._handleOpenURL)
 
 <a name="module_Insert.init"></a>
 
-### Insert.init([options], [success], [error])
+### Insert.init([success], [error])
 Initialise the native SDK.
 
 You should call this as soon as possible in the app.
@@ -27,9 +30,6 @@ Probably before tearing down the splashscreen when you plan to serve
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [options] | <code>object</code> | options for the initialisation |
-| [options.userAttributes] | <code>object</code> | - |
-| [options.userId] | <code>string</code> | the user id to set before calling the native init |
 | [success] | <code>function</code> | called when initialisation succeeded |
 | [error] | <code>function</code> | called when initialisation fails |
 
@@ -95,3 +95,9 @@ Set a user id to tailor inserts to users.
 | [success] | <code>function</code> | called when the id was set |
 | [error] | <code>function</code> | called when the id could not be set |
 
+<a name="module_Insert.._handleOpenURL"></a>
+
+### Insert~_handleOpenURL
+Handle insert-* URLs in iOS apps
+
+**Kind**: inner property of <code>[Insert](#module_Insert)</code>  
