@@ -3,6 +3,9 @@ ext {
 }
 
 android {
+    defaultConfig {
+      multiDexEnabled true
+    }
     dexOptions {
         jumboMode = true
         javaMaxHeapSize "3g"
