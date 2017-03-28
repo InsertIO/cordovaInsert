@@ -109,4 +109,3 @@ window.cordova.plugins.InsertIO.eventOccurred('userLogin', {});
 License
 =======
 The Insert Cordova plug-in is licensed under the [Apache 2 license](./LICENSE.txt)
-
