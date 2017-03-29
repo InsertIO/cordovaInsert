@@ -50,12 +50,11 @@
         </activity>
       </config-file>
 
-      <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
-        <application android:name="io.insert.cordova.plugin.InsertApplication"></application>
-      </edit-config>
+      <config-file file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+        <application android:name="android.support.multidex.MultiDexApplication"></application>
+      </config-file>
 
       <source-file src="src/android/Insert.java" target-dir="src/io/insert/cordova/plugin" />
-      <source-file src="src/android/InsertApplication.java" target-dir="src/io/insert/cordova/plugin" />
 
       <framework src="src/android/insert.gradle" custom="true" type="gradleReference" />
     </platform>
