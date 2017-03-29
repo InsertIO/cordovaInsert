@@ -2,11 +2,11 @@
 #import "CDVInsert.h"
 #import <InsertFramework/InsertFramework.h>
 
-@interface CDVInsertIOPlugin()
+@interface CDVInsert()
 
 @end
 
-@implementation CDVInsertIOPlugin
+@implementation CDVInsert
 
 - (void)pluginInitialize {
 }
@@ -49,10 +49,10 @@
     NSString *appKey = [self.commandDelegate.settings objectForKey:@"insertappkey"];
     NSString *companyName = [self.commandDelegate.settings objectForKey:@"insertcompanyname"];
     
-    if (appKey == nil) {
+    if ([appKey length] == 0) {
         return [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"IOS_APP_KEY not defined in config.xml"];
     }
-    if (companyName == nil) {
+    if ([companyName length] == 0) {
         return [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"COMPANY_NAME not defined in config.xml"];
     }
     

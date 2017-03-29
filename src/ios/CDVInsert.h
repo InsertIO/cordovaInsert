@@ -3,7 +3,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface CDVInsertIOPlugin : CDVPlugin
+@interface CDVInsert : CDVPlugin
 - (void)init:(CDVInvokedUrlCommand *)command;
 - (void)dismissVisibleInserts:(CDVInvokedUrlCommand *)command;
 - (void)eventOccurred:(CDVInvokedUrlCommand *)command;
