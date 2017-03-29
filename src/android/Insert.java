@@ -54,6 +54,7 @@ public class Insert extends CordovaPlugin {
             });
         } else if (action.equals("dismissVisibleInserts")) {
             dismissVisibleInserts();
+            callbackContext.success();
         } else if (action.equals("eventOccurred")) {
             if (inputs.length() >= 2) {
                 cordova.getThreadPool().execute(new Runnable() {
