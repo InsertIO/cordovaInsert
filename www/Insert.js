@@ -1,17 +1,19 @@
 /**
- * @module Insert
+ * @module cordova.plugins.InsertIO
  * 
  */
 
 function ensureStringValues(items) {
   return Object.keys(items).reduce(function(result, key) {
-    result[key] = "\"" + items[key].toString() + "\"";
+    result[key] = items[key].toString();
     return result;
   }, {});
 }
 
 /**
  * Handle insert-* URLs in iOS apps
+ * 
+ * @private
  */
 var _handleOpenURL = window.handleOpenURL;
 window.handleOpenURL = function(url) {
