@@ -1,5 +1,5 @@
 
-#import "CDVInsertIOPlugin.h"
+#import "CDVInsert.h"
 #import <InsertFramework/InsertFramework.h>
 
 @interface CDVInsertIOPlugin()
