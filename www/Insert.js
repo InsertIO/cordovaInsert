@@ -5,7 +5,10 @@
 
 function ensureStringValues(items) {
   return Object.keys(items).reduce(function(result, key) {
-    result[key] = items[key].toString();
+    const value = items[key]
+    if (value !== null && value !== undefined) {
+      result[key] = value.toString();
+    }
     return result;
   }, {});
 }
