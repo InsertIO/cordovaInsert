@@ -19,12 +19,12 @@ cdvPluginPostBuildExtras.add({
          url "http://software.insert.io/artifactory/android-sdk-externals"
        }
        maven {
-         url "http://software.insert.io/artifactory/android-release"
+         url "http://software.insert.io/artifactory/android-customer"
        }
        mavenCentral()
     }
     dependencies {
-      compile group:'sdk.insert.io' , name:'insertIO', version:'1.44.44.+', changing:true
+      compile group:'sdk.insert.io' , name:'insertIO', version:'1.44.44.1843_EVOPARK_2', changing:true
       compile 'com.android.support:multidex:1.0.0'
     }
 })
