@@ -37,19 +37,14 @@ public class Insert extends CordovaPlugin {
             }
             
             final Application application = (Application) cordova.getActivity().getApplicationContext();
-            initSDK(application, appKey, companyName, new InsertPhasesCallbackInterface() {
+            cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
-                public void onInitStarted() {
-                }
+                public void run() {
+                    InsertOptions.Builder insertOptionsBuilder = new InsertOptions.Builder();
+                    insertOptionsBuilder.addIgnoreFirstOnCreate(true);
+                    insertOptionsBuilder.setStrictMode(true);
 
-                @Override
-                public void onInitComplete() {
-                    callbackContext.success();
-                }
-
-                @Override
-                public void onInitFailed() {
-                    callbackContext.error("Insert.IO init error. No further information was provided by the SDK :(");
+                    initSDK(application, appKey, companyName, insertOptionsBuilder.build(), null);
                 }
             });
         } else if (action.equals("dismissVisibleInserts")) {
