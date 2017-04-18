@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import sdk.insert.io.InsertPhasesCallbackInterface;
+import sdk.insert.io.Insert.InsertOptions;
 
 import static sdk.insert.io.Insert.initSDK;
 import static sdk.insert.io.Insert.dismissVisibleInserts;
