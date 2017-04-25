@@ -15,7 +15,7 @@ InsertExport.dismissVisibleInserts = function(successCallback, failureCallback) 
 }
 
 InsertExport.setPushId = function(pushId, successCallback, failureCallback) {
-        if (typeof event === 'string'){
+        if (typeof pushId === 'string'){
         cordova.exec(
             successCallback,
             failureCallback,
