@@ -21,7 +21,7 @@ public class Insert extends CordovaPlugin {
 			dismissVisibleInserts();
 		} else if (action.equals("setPushId")) {
 			if (inputs.length() > 0) {
-			setPushId(inputs.get(0).toString();
+			setPushId(inputs.get(0).toString());
 			}
 		} else if (action.equals("eventOccurred")) {
 			if (inputs.length() >= 2) {
