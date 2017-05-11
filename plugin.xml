@@ -49,7 +49,9 @@
           </intent-filter>
         </activity>
       </config-file>
-
+      <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <meta-data android:name="insert_debug_logging" android:value="true" />
+      </config-file>
       <config-file file="AndroidManifest.xml" target="/manifest/application" mode="merge">
         <application android:name="android.support.multidex.MultiDexApplication"></application>
       </config-file>
