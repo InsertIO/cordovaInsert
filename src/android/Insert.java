@@ -44,6 +44,7 @@ public class Insert extends CordovaPlugin {
                     InsertOptions.Builder insertOptionsBuilder = new InsertOptions.Builder();
                     insertOptionsBuilder.setIgnoreFirstOnCreate(true);
                     insertOptionsBuilder.setStrictMode(true);
+                    insertOptionsBuilder.setFirstActivity(cordova.getActivity());
 
                     initSDK(application, appKey, companyName, insertOptionsBuilder.build(), null);
                 }
