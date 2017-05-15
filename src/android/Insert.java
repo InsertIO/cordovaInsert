@@ -24,7 +24,7 @@ import static sdk.insert.io.Insert.setUserId;
 public class Insert extends CordovaPlugin {
     @Override
     public boolean execute(String action, final JSONArray inputs, final CallbackContext callbackContext) throws JSONException {
-        if (action.equals("init")) {
+        if (action.equals("initSDK")) {
             final String companyName = this.preferences.getString("insertcompanyname", "");
             if (companyName.length() == 0) {
                 callbackContext.error("COMPANY_NAME not set in config.xml");

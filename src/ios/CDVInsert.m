@@ -45,7 +45,7 @@
     }
 }
 
-- (void)init:(CDVInvokedUrlCommand *)command {
+- (void)initSDK:(CDVInvokedUrlCommand *)command {
     NSString *appKey = [self.commandDelegate.settings objectForKey:@"insertappkey"];
     NSString *companyName = [self.commandDelegate.settings objectForKey:@"insertcompanyname"];
     

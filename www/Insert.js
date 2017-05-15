@@ -47,12 +47,12 @@ module.exports = {
    * @see Insert.setUserAttributes
    * @see Insert.setUserId
    */
-  init: function(success, error) {
+  initSDK: function(success, error) {
     cordova.exec(
       success,
       error,
       'Insert',
-      'init',
+      'initSDK',
       []
     );
   },
