@@ -25,7 +25,7 @@ public class Insert extends CordovaPlugin {
 			setPushId(inputs.get(0).toString());
 			}
 		}else if (action.equals("setUserAttributes")) {
-            (toMap(inputs.getJSONObject(0)));
+            setUserAttributes(toMap(inputs.getJSONObject(0)));
             callbackContext.success();
         } else if (action.equals("eventOccurred")) {
 			if (inputs.length() >= 2) {
@@ -54,4 +54,15 @@ public class Insert extends CordovaPlugin {
 		}
 		return true;
 	}
+
+	private static Map<String, String> toMap(final JSONObject map) throws JSONException {
+        final Map<String, String> result = new HashMap<String, String>(map.length());
+        final Iterator<String> it = map.keys();
+        while (it.hasNext()) {
+            final String key = it.next();
+            result.put(key, map.get(key).toString());
+        }
+        return result;
+    }
+
 }
