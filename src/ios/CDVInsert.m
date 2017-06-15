@@ -16,6 +16,13 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
 }
 
+- (void)setUserAttributes:(CDVInvokedUrlCommand* )command {
+    if (command.arguments.count < 1) {
+        return [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"Missing attributes"];
+    }
+    [[InsertManager sharedManager]setUserAttributes:command.arguments[0]];
+    [self sendPluginResult:CDVCommandStatus_OK command:command];
+}
 
 -(void)eventOccurred:(CDVInvokedUrlCommand *)command {
     CDVPluginResult *pluginResult;
@@ -28,6 +35,20 @@
     } else {
         
     }
+}
+
+
+
+- (void)sendPluginResult:(CDVCommandStatus)status command:(CDVInvokedUrlCommand*)command {
+    [self sendPluginResult:status command:command message:nil];
+}
+
+- (void)sendPluginResult:(CDVCommandStatus)status command:(CDVInvokedUrlCommand*)command message:(NSString *)message {
+    CDVPluginResult *result = [CDVPluginResult resultWithStatus:status messageAsString:message];
+    if (status == CDVCommandStatus_NO_RESULT) {
+        [result setKeepCallbackAsBool:YES];
+    }
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
 
