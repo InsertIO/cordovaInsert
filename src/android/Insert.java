@@ -13,6 +13,7 @@ import java.util.Map;
 import static sdk.insert.io.Insert.dismissVisibleInserts;
 import static sdk.insert.io.Insert.eventOccurred;
 import static sdk.insert.io.Insert.setPushId;
+import static sdk.insert.io.Insert.setUserAttributes;
 
 public class Insert extends CordovaPlugin {
 	@Override
@@ -23,7 +24,10 @@ public class Insert extends CordovaPlugin {
 			if (inputs.length() > 0) {
 			setPushId(inputs.get(0).toString());
 			}
-		} else if (action.equals("eventOccurred")) {
+		}else if (action.equals("setUserAttributes")) {
+            (toMap(inputs.getJSONObject(0)));
+            callbackContext.success();
+        } else if (action.equals("eventOccurred")) {
 			if (inputs.length() >= 2) {
 				Map<String, String> mapData = new HashMap<String, String>();
 				JSONObject jsonObject = (JSONObject) inputs.get(1);
