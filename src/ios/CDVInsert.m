@@ -24,6 +24,14 @@
     [self sendPluginResult:CDVCommandStatus_OK command:command];
 }
 
+- (void)setUserId:(CDVInvokedUrlCommand* )command {
+    if (command.arguments.count < 1) {
+        return [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"Missing user id"];
+    }
+    [[InsertManager sharedManager]setUserId:command.arguments[0]];
+    [self sendPluginResult:CDVCommandStatus_OK command:command];
+}
+
 -(void)eventOccurred:(CDVInvokedUrlCommand *)command {
     CDVPluginResult *pluginResult;
     NSString *callbackId = command.callbackId;
@@ -36,8 +44,6 @@
         
     }
 }
-
-
 
 - (void)sendPluginResult:(CDVCommandStatus)status command:(CDVInvokedUrlCommand*)command {
     [self sendPluginResult:status command:command message:nil];

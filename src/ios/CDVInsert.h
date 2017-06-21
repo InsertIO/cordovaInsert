@@ -7,4 +7,5 @@
 - (void)dismissVisibleInserts:(CDVInvokedUrlCommand *)command;
 - (void)eventOccurred:(CDVInvokedUrlCommand *)command;
 - (void)setUserAttributes:(CDVInvokedUrlCommand* )command;
+- (void)setUserId:(CDVInvokedUrlCommand* )command;
 @end
