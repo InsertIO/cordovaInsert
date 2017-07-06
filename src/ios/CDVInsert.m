@@ -38,7 +38,7 @@
     if (command.arguments.count >= 2) {
         NSString *actionName = command.arguments[0];
         NSDictionary *params = command.arguments[1];
-        [[InsertManager sharedManager] eventOccurred:actionName parameters:params];
+        [[InsertManager sharedManager] eventOccurred:actionName params:params];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
     } else {
         
