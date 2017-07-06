@@ -77,14 +77,6 @@ This also shows your `COMPANY_NAME` again.
 Adding the Insert SDK to your Cordova app
 =========================================
 
-If you have git installed, run:
-
-```
-cordova plugin add --save https://github.com/InsertIO/cordovaInsert.git --variable COMPANY_NAME="yourcompanyname" ...
-```
-
-If git is not installed, download this repository to your machine and run:
-
 ```
 1) git clone https://github.com/InsertIO/cordovaInsert.git (clone it into some directory, e.g: /path/to/cordovaInsertPluginFolder)
 2) cd  /path/to/cordovaInsertPluginFolder
