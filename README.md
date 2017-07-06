@@ -86,7 +86,11 @@ cordova plugin add --save https://github.com/InsertIO/cordovaInsert.git --variab
 If git is not installed, download this repository to your machine and run:
 
 ```
-cordova plugin add --save <folder-on-your-machine> --variable COMPANY_NAME="yourcompanyname" ...
+1) git clone https://github.com/InsertIO/cordovaInsert.git (clone it into some directory, e.g: /path/to/cordovaInsertPluginFolder)
+2) cd  /path/to/cordovaInsertPluginFolder
+3) git checkout hotfix/changes_to_init_pk_pr (This is the plugin version for the pure JS)
+4) cd /path/to/your/project/ 
+5) cordova plugin add --save /path/to/cordovaInsertPluginFolder --variable COMPANY_NAME="yourcompanyname" --variable ANDROID_APP_KEY=“appKeyHere” --variable ANDROID_URL_ID=“urlHexIdHere”
 ```
 
 Remember to specify all `--variable` for your platform(s):
@@ -102,14 +106,19 @@ You always have to specify the `COMPANY_NAME` but can omit ANDROID_??? or IOS_??
 
 How to use
 ==========
+Example usage:
+- First, call window.cordova.plugins.InsertIO.init() as early as possible in your app flow.
 - Within the Insert console go to your app and create a custom event (say "userLogin"). 
 - Create a new insert and under the Triggers tab use a trigger type of custom event. Select "userLogin" as the event.
 - In your javascript code use the following code to trigger the insert:
-
-
-```
 window.cordova.plugins.InsertIO.eventOccurred('userLogin', {});
-```
+
+##The functions that the plugin exports are:
+1) initSDK - should always be called as early as possible
+2) dismissVisibleInserts - in order to dismiss all visible inserts.
+3) eventOccured(event, params) (As demonstrated in the example)
+4) setUserAttributes(userAttrMap) - set the user attributes.
+5) setUserId(id) - to set the user id.
 
 License
 =======
