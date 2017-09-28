@@ -1,0 +1,34 @@
+{
+  "name": "cordovaInsert",
+  "version": "0.1.1",
+  "description": "Adds Insert's SDK to Cordova projects",
+  "cordova": {
+    "id": "io.cordova-insert",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InsertIO/cordovaInsert.git"
+  },
+  "keywords": [
+    "insert",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.7.0"
+    }
+  ],
+  "author": "night2tl",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/InsertIO/cordovaInsert/issues"
+  },
+  "homepage": "https://github.com/InsertIO/cordovaInsert#readme"
+}
