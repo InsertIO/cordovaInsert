@@ -41,19 +41,21 @@ module.exports = {
    * You should call this as soon as possible in the app.
    * Probably before tearing down the splashscreen when you plan to serve
    * "App Start" triggered Inserts.
-   * 
+   * @param {object} userAttributes - A string key - any value
+   * @param {string} visitorId - the visitor's id.
+   * @param {string} accoundIt - the account's id.
    * @param {function} [success] - called when initialisation succeeded
    * @param {function} [error] - called when initialisation fails
    * @see Insert.setUserAttributes
    * @see Insert.setUserId
    */
-  initSDK: function(success, error) {
+  initSDK: function(userAttributes, visitorId, accountId, success, error) {
     cordova.exec(
       success,
       error,
       'Insert',
       'initSDK',
-      []
+      [userAttributes, visitorId, accountId]
     );
   },
 
@@ -62,7 +64,6 @@ module.exports = {
    * 
    * Since inserts can carry private information you 
    * should call this function when your user logs out of you app.
-   * 
    * @param {function} [success]
    * @param {function} [error]
    */

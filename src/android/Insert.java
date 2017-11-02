@@ -13,13 +13,12 @@ import java.util.Iterator;
 import java.util.Map;
 
 import sdk.insert.io.InsertPhasesCallbackInterface;
-import sdk.insert.io.Insert.InsertOptions;
-
 import static sdk.insert.io.Insert.initSDK;
+import static sdk.insert.io.Insert.InsertInitParams;
+import static sdk.insert.io.Insert.InsertOptions;
 import static sdk.insert.io.Insert.dismissVisibleInserts;
 import static sdk.insert.io.Insert.eventOccurred;
 import static sdk.insert.io.Insert.setUserAttributes;
-import static sdk.insert.io.Insert.setUserId;
 
 public class Insert extends CordovaPlugin {
     @Override
@@ -45,8 +44,27 @@ public class Insert extends CordovaPlugin {
                     insertOptionsBuilder.setIgnoreFirstOnCreate(true);
                     insertOptionsBuilder.setStrictMode(true);
                     insertOptionsBuilder.setFirstActivity(cordova.getActivity());
-
-                    initSDK(application, appKey, companyName, insertOptionsBuilder.build(), null);
+                    if (inputs.length() >=2) {
+                        try {
+                            InsertInitParams insertInitParams = new InsertInitParams()
+                                                                    .setInsertOptions(insertOptionsBuilder.build());
+                            if (!inputs.isNull(0)) {
+                                insertInitParams.setUserAttributes(toMap(inputs.getJSONObject(0)));
+                            }
+                            if (!inputs.isNull(1)) {
+                                insertInitParams.setVisitorId(inputs.getString(1));
+                            }
+                            if (!inputs.isNull(2)) {
+                                insertInitParams.setAccountId(inputs.getString(2));
+                            }
+                            initSDK(application,
+                            appKey,
+                            companyName,
+                            insertInitParams);
+                        } catch (JSONException e) {
+                            callbackContext.error(e.getMessage());
+                        }
+                    }
                 }
             });
         } else if (action.equals("dismissVisibleInserts")) {
@@ -68,9 +86,6 @@ public class Insert extends CordovaPlugin {
             }
         } else if (action.equals("setUserAttributes")) {
             setUserAttributes(toMap(inputs.getJSONObject(0)));
-            callbackContext.success();
-        } else if (action.equals("setUserId")) {
-            setUserId(inputs.getString(0));
             callbackContext.success();
         } else {
             return false; // will result in a MethodNotFound error
