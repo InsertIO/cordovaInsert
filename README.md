@@ -99,18 +99,18 @@ You always have to specify the `COMPANY_NAME` but can omit ANDROID_??? or IOS_??
 How to use
 ==========
 Example usage:
-- First, call window.cordova.plugins.InsertIO.init() as early as possible in your app flow.
+- First, call window.cordova.plugins.InsertIO.initSDK(userAttributes, visitorId, accountId) as early as possible in your app flow. (The parameters userAttributes, visitorId and accountId can be null)
 - Within the Insert console go to your app and create a custom event (say "userLogin"). 
 - Create a new insert and under the Triggers tab use a trigger type of custom event. Select "userLogin" as the event.
 - In your javascript code use the following code to trigger the insert:
 window.cordova.plugins.InsertIO.eventOccurred('userLogin', {});
 
 ##The functions that the plugin exports are:
-1) initSDK - should always be called as early as possible
+1) initSDK(userAttributes, visitorId, accountId) - should always be called as early as possible
 2) dismissVisibleInserts - in order to dismiss all visible inserts.
 3) eventOccured(event, params) (As demonstrated in the example)
 4) setUserAttributes(userAttrMap) - set the user attributes.
-5) setUserId(id) - to set the user id.
+5) setPushId(id) - to set the push id.
 
 License
 =======
