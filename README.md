@@ -116,16 +116,24 @@ Push support
 1) Add push notification plugin (https://github.com/phonegap/phonegap-plugin-push):
 
    ```
-   cordova plugin add phonegap-plugin-push --variable SENDER_ID="YOUR_SENDER_ID"
+   cordova plugin add phonegap-plugin-push
    ```
+2) In your project root folder, add the following inside config.xml
+    ```
+    <platform name="android">
+      <resource-file src="google-services.json" target="google-services.json" />
+    </platform>
 
-   make sure you replace SENDER_ID with your own sender id.
-2) Add this code in your index.js in the onDeviceReady function:
+    ```
+3) Add this code in your index.js in the onDeviceReady function:
 
 ```
 
-	var push = PushNotification.init({ "android": {"senderID": "YOUR_SENDER_ID"},
-         "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
+	var push = PushNotification.init({
+        android: {
+            senderID: YOUR_SENDER_ID_HERE
+        }
+    });
 
     push.on('registration', function(data) {
          console.log("gcm registration");
@@ -147,7 +155,7 @@ Push support
 
 ```
 
-3) You're ready to go. Enter insert console and configure your push insert.
+4) You're ready to go. Enter insert console and configure your push insert.
 
 License
 =======
