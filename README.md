@@ -118,7 +118,9 @@ Push support
    ```cordova plugin add phonegap-plugin-push --variable SENDER_ID="YOUR_SENDER_ID"```
    make sure you replace SENDER_ID with your own sender id.
 2) Add this code in your index.js in the onDeviceReady function:
-```var push = PushNotification.init({ "android": {"senderID": "YOUR_SENDER_ID"},
+
+```
+	var push = PushNotification.init({ "android": {"senderID": "YOUR_SENDER_ID"},
          "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
 
     push.on('registration', function(data) {
@@ -137,7 +139,9 @@ Push support
 
     push.on('error', function(e) {
         console.log(e.message);
-    });```
+    });
+```
+
 3) You're ready to go. Enter insert console and configure your push insert.
 
 License
