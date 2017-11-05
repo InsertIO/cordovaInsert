@@ -79,7 +79,7 @@ Adding the Insert SDK to your Cordova app
 ```
 1) git clone https://github.com/InsertIO/cordovaInsert.git (clone it into some directory, e.g: /path/to/cordovaInsertPluginFolder)
 2) cd  /path/to/cordovaInsertPluginFolder
-3) git checkout hotfix/changes_to_init_pk_pr (This is the plugin version for the pure JS)
+3) git checkout hotfix/pure_js_plugin (This is the plugin version for the pure JS)
 4) cd /path/to/your/project/ 
 5) cordova plugin add --save /path/to/cordovaInsertPluginFolder --variable COMPANY_NAME="yourcompanyname" --variable ANDROID_APP_KEY=“appKeyHere” --variable ANDROID_URL_ID=“urlHexIdHere”
 ```
