@@ -112,6 +112,34 @@ window.cordova.plugins.InsertIO.eventOccurred('userLogin', {});
 4) setUserAttributes(userAttrMap) - set the user attributes.
 5) setPushId(id) - to set the push id.
 
+Push support
+============
+1) Add push notification plugin (https://github.com/phonegap/phonegap-plugin-push):
+   ```cordova plugin add phonegap-plugin-push --variable SENDER_ID="YOUR_SENDER_ID"```
+   make sure you replace SENDER_ID with your own sender id.
+2) Add this code in your index.js in the onDeviceReady function:
+```var push = PushNotification.init({ "android": {"senderID": "YOUR_SENDER_ID"},
+         "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
+
+    push.on('registration', function(data) {
+         console.log("gcm registration");
+         console.log(data.registrationId);
+         window.plugins.Insert.setPushId(data.registrationId);
+    });
+
+    push.on('notification', function(data) {
+        console.log(data.message);
+        console.log(data.title);
+        console.log(data.count);
+        console.log(data.image);
+        console.log(data.additionalData);
+    });
+
+    push.on('error', function(e) {
+        console.log(e.message);
+    });```
+3) You're ready to go. Enter insert console and configure your push insert.
+
 License
 =======
 The Insert Cordova plug-in is licensed under the [Apache 2 license](./LICENSE.txt)
