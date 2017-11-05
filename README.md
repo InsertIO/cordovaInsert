@@ -106,7 +106,7 @@ window.cordova.plugins.InsertIO.eventOccurred('userLogin', {});
 
 ##The functions that the plugin exports are:
 1) initSDK(userAttributes, visitorId, accountId) - should always be called as early as possible
-2) dismissVisibleInserts - in order to dismiss all visible inserts.
+2) dismissVisibleInserts() - in order to dismiss all visible inserts.
 3) eventOccured(event, params) (As demonstrated in the example)
 4) setUserAttributes(userAttrMap) - set the user attributes.
 5) setPushId(id) - to set the push id.
