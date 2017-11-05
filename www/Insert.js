@@ -119,18 +119,18 @@ module.exports = {
     );
   },
 
-  setPushId: function(pushId, successCallback, failureCallback) {
+  setPushId: function(pushId, success, error) {
     if (typeof pushId === 'string'){
       cordova.exec(
-          successCallback,
-          failureCallback,
+          success,
+          error,
           'Insert',
           'setPushId',
           [pushId]
       );
      } else {
-       if (typeof failureCallback === 'function') {
-         failureCallback('type missmatch: pushId should be of type string')
+       if (typeof error === 'function') {
+         error('type missmatch: pushId should be of type string')
        }
     }
   }
