@@ -13,10 +13,9 @@ For each of your cordova apps you have to create an Insert app in the Insert con
 
 Open the Insert console in your account and select "Apps". Click the "Add New App" button and follow the instructions.
 
-For each Insert app open the "SDK Integration" sections and grab the following information.<br>
-You need to provide those information as plugin variables during the plugin's installation.<br>
-You can ignore all the setup instructions in the SDK Integration document, since this plugin does handle all that for 
-you automatically.
+For each Insert App open the "SDK Integration" section and collect the information mentioned below. (See "Collect required variables for plugin installation" section)<br>
+You need to provide the information you've seen in the insert console as plugin variables during the plugin's installation.<br>
+You can ignore all the setup instructions in the insert console, since this plugin handles everything for you automatically.
 
 ## Collect required variables for plugin installation
 
@@ -145,7 +144,7 @@ Push support
     push.on('error', function(e) {
         console.log(e.message);
     });
-    
+
 ```
 
 3) You're ready to go. Enter insert console and configure your push insert.
