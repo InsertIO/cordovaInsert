@@ -115,11 +115,16 @@ window.cordova.plugins.InsertIO.eventOccurred('userLogin', {});
 Push support
 ============
 1) Add push notification plugin (https://github.com/phonegap/phonegap-plugin-push):
-   ```cordova plugin add phonegap-plugin-push --variable SENDER_ID="YOUR_SENDER_ID"```
+
+   ```
+   cordova plugin add phonegap-plugin-push --variable SENDER_ID="YOUR_SENDER_ID"
+   ```
+
    make sure you replace SENDER_ID with your own sender id.
 2) Add this code in your index.js in the onDeviceReady function:
 
 ```
+
 	var push = PushNotification.init({ "android": {"senderID": "YOUR_SENDER_ID"},
          "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
 
@@ -140,6 +145,7 @@ Push support
     push.on('error', function(e) {
         console.log(e.message);
     });
+    
 ```
 
 3) You're ready to go. Enter insert console and configure your push insert.
