@@ -118,7 +118,33 @@ module.exports = {
       [ensureStringValues(attributes)]
     );
   },
-
+  /**
+   * handle insert push.
+   * 
+   * @param {object} data - the data object passed to the insert push handler.
+   * @param {function} [success] - called when the attributes were set
+   * @param {function} [error] - called when the attributes could not be set
+   * 
+   * @see push section at cordovaInsert github.
+   */
+  handleInsertPush: function(data, success, error) {
+    cordova.exec(
+      success,
+      error,
+      "Insert",
+      "handleInsertPush",
+      [data]
+    );
+  },
+  /**
+   * Set push id.
+   * 
+   * @param {string} pushId - A string push Id.
+   * @param {function} [success] - called when the attributes were set
+   * @param {function} [error] - called when the attributes could not be set
+   * 
+   * @see push section at cordovaInsert github.
+   */
   setPushId: function(pushId, success, error) {
     if (typeof pushId === 'string'){
       cordova.exec(
