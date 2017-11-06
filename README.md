@@ -130,8 +130,8 @@ Push support
 ```
 
 	var push = PushNotification.init({
-        android: {
-            senderID: YOUR_SENDER_ID_HERE
+        "android": {
+            "senderID": "YOUR_SENDER_ID_HERE"
         }
     });
 
