@@ -138,7 +138,7 @@ Push support
     push.on('registration', function(data) {
          console.log("gcm registration");
          console.log(data.registrationId);
-         window.plugins.Insert.setPushId(data.registrationId);
+         window.cordova.plugins.InsertIO.setPushId(data.registrationId);
     });
 
     push.on('notification', function(data) {
