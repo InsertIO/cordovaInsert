@@ -40,24 +40,6 @@ InsertExport.setPushId = function(pushId, successCallback, failureCallback) {
        }
 }
 
-  /**
-   * Set a user id to tailor inserts to users.
-   * 
-   * @param {string} userId - an application defined user id
-   * @param {function} [success] - called when the id was set
-   * @param {function} [error] - called when the id could not be set
-   * 
-   * @see [How to: Use custom data when defining an Insert Audience](https://support.insert.io/hc/en-us/articles/207569209-How-to-Use-custom-data-when-defining-an-Insert-Audience)
-   */
-InsertExport.setUserId = function(userId, success, error) {
-    cordova.exec(
-      success,
-      error,
-      "Insert",
-      "setUserId",
-      [userId]
-    );
-  }
 
   /**
    * Set user attributes to tailor specific Inserts to users.

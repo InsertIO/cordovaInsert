@@ -14,7 +14,6 @@ import static sdk.insert.io.Insert.dismissVisibleInserts;
 import static sdk.insert.io.Insert.eventOccurred;
 import static sdk.insert.io.Insert.setPushId;
 import static sdk.insert.io.Insert.setUserAttributes;
-import static sdk.insert.io.Insert.setUserId;
 
 public class Insert extends CordovaPlugin {
 	@Override
@@ -51,12 +50,7 @@ public class Insert extends CordovaPlugin {
 					}
 				});
 			}
-		} else if (action.equals("setUserId")) {
-            setUserId(inputs.getString(0));
-            callbackContext.success();
-        }
-        else {
-		}
+		} 
 		return true;
 	}
 
