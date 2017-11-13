@@ -72,23 +72,27 @@
         visitorId = command.arguments[1];
         accountId = command.arguments[2];
     } else {
-        [self sendPluginResult:CDVCommandStatus_OK command:command message:@"Expecting 2 arguments: actionName, params"];
+        [self sendPluginResult:CDVCommandStatus_OK command:command message:@"Expecting 3 arguments: userAttributes, visitorId, accountId"];
     }
     InsertInitParams *initParams = [[InsertInitParams alloc] init];
-    if (userAttributes)
+    if (userAttributes) {
         [initParams setUserAttributes:userAttributes];
-    if (visitorId)
+    }
+    if (visitorId) {
         [initParams setVisitorId:visitorId];
-    if (accountId)
+    }
+    if (accountId) {
         [initParams setAccountId:accountId];
+    }
     [[InsertManager sharedManager] initSDK:appKey companyName:companyName initParams:initParams];
     [self sendPluginResult:CDVCommandStatus_NO_RESULT command:command];
 }
 
 - (void)setPushId:(CDVInvokedUrlCommand *)command {
     NSData *pushId;
-    if (command.arguments.count >= 1)
+    if (command.arguments.count >= 1) {
         pushId = command.arguments[0];
+    }
     if (pushId) {
         [[InsertManager sharedManager] setPushId:pushId];
         [self sendPluginResult:CDVCommandStatus_OK command:command];
