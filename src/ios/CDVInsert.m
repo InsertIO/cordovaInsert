@@ -1,6 +1,6 @@
 
 #import "CDVInsert.h"
-#import <InsertFramework/InsertFramework.h>
+@import InsertFramework;
 
 @interface CDVInsert()
 
@@ -18,15 +18,6 @@
     [[InsertManager sharedManager]setUserAttributes:command.arguments[0]];
     [self sendPluginResult:CDVCommandStatus_OK command:command];
 }
-
-- (void)setUserId:(CDVInvokedUrlCommand* )command {
-    if (command.arguments.count < 1) {
-        return [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"Missing user id"];
-    }
-    [[InsertManager sharedManager]setUserId:command.arguments[0]];
-    [self sendPluginResult:CDVCommandStatus_OK command:command];
-}
-
 
 - (void)dismissVisibleInserts:(CDVInvokedUrlCommand *)command {
     [[InsertManager sharedManager] dismissVisibleInserts];
@@ -73,8 +64,35 @@
                             [notifyCenter removeObserver:errorToken];
                             [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"Insert.IO init error. No further information was provided by the SDK :("];
                         }];
-    [[InsertManager sharedManager] initSDK:appKey companyName:companyName];
+    NSDictionary *userAttributes;
+    NSString *visitorId;
+    NSString *accountId;
+    if (command.arguments.count >= 3) {
+        userAttributes = command.arguments[0];
+        visitorId = command.arguments[1];
+        accountId = command.arguments[2];
+    } else {
+        [self sendPluginResult:CDVCommandStatus_OK command:command message:@"Expecting 2 arguments: actionName, params"];
+    }
+    InsertInitParams *initParams = [[InsertInitParams alloc] init];
+    if (userAttributes)
+        [initParams setUserAttributes:userAttributes];
+    if (visitorId)
+        [initParams setVisitorId:visitorId];
+    if (accountId)
+        [initParams setAccountId:accountId];
+    [[InsertManager sharedManager] initSDK:appKey companyName:companyName initParams:initParams];
     [self sendPluginResult:CDVCommandStatus_NO_RESULT command:command];
+}
+
+- (void)setPushId:(CDVInvokedUrlCommand *)command {
+    NSData *pushId;
+    if (command.arguments.count >= 1)
+        pushId = command.arguments[0];
+    if (pushId) {
+        [[InsertManager sharedManager] setPushId:pushId];
+        [self sendPluginResult:CDVCommandStatus_OK command:command];
+    }
 }
 
 - (void)sendPluginResult:(CDVCommandStatus)status command:(CDVInvokedUrlCommand*)command {
