@@ -104,6 +104,14 @@
     }
 }
 
+/**
+ *
+ *The method converts PUSHID format from NSString back to NSData
+ *
+ *The method is used to provide PUSHID to native iOS SDK in correct NSData format. PUSHID was previously converted from NSData to NSString format by native iOS SDK at IIOSetupManager.m:293-296 -(NSString *)getPushId method. JavaScript code at Cordova Insert.js:149 setPushId:function(pushId, success, error) method also explicitly checks for string format of value retrieved. But when it comes to InsertManager.m:1119 setPushId:(NSData *)pushId native iOS method, it needs to be passed in NSData format. For more details, please see Avner's comment at IIOSetupManager.m:293-296 -(NSString *)getPushId native iOS method.
+ *
+ */
+
 - (NSData *)restorePushId:(NSString *)pushId {
   pushId = [pushId stringByReplacingOccurrencesOfString:@" " withString:@""];
   NSMutableData *pushIdRestored= [[NSMutableData alloc] init];
