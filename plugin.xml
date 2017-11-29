@@ -64,7 +64,7 @@
     <platform name="ios">
       <preference name="IOS_APP_KEY" />
       <preference name="IOS_URL_ID" />
-      <framework src="Insert" type="podspec" spec="~> 1.49.0.0" />
+      <framework src="Insert" type="podspec" spec="1.50.0.2350" />
 
       <config-file target="config.xml" parent="/*">
         <feature name="Insert">
@@ -79,16 +79,6 @@
             <key>CFBundleURLSchemes</key>
             <array>
               <string>insert-$IOS_URL_ID</string>
-            </array>
-          </dict>
-        </array>
-      </config-file>
-      <config-file target="Entitlements-Debug.plist" >
-        <array>
-          <dict>
-            <key>aps-environment</key>
-            <array>
-              <string>development</string>
             </array>
           </dict>
         </array>

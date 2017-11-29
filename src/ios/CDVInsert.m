@@ -12,11 +12,13 @@
 }
 
 - (void)setUserAttributes:(CDVInvokedUrlCommand* )command {
-    if (command.arguments.count < 1) {
-        return [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"Missing attributes"];
+    if (command.arguments.count >= 1) {
+        [[InsertManager sharedManager]setUserAttributes:command.arguments[0]];
+        [self sendPluginResult:CDVCommandStatus_OK command:command];
     }
-    [[InsertManager sharedManager]setUserAttributes:command.arguments[0]];
-    [self sendPluginResult:CDVCommandStatus_OK command:command];
+    else {
+        [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"Missing attributes"];
+    }
 }
 
 - (void)dismissVisibleInserts:(CDVInvokedUrlCommand *)command {
@@ -32,7 +34,7 @@
         [[InsertManager sharedManager] eventOccurred:actionName params:params];
         [self sendPluginResult:CDVCommandStatus_OK command:command];
     } else {
-        [self sendPluginResult:CDVCommandStatus_OK command:command message:@"Expecting 2 arguments: actionName, params"];
+        [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"Expecting 2 arguments: actionName, params"];
     }
 }
 
@@ -74,7 +76,10 @@
     } else {
         [self sendPluginResult:CDVCommandStatus_OK command:command message:@"Expecting 3 arguments: userAttributes, visitorId, accountId"];
     }
-    InsertInitParams *initParams = [[InsertInitParams alloc] init];
+    InsertInitParams *initParams;
+    if (userAttributes || visitorId || accountId) {
+        initParams = [[InsertInitParams alloc] init];
+    }
     if (userAttributes) {
         [initParams setUserAttributes:userAttributes];
     }
@@ -89,14 +94,30 @@
 }
 
 - (void)setPushId:(CDVInvokedUrlCommand *)command {
-    NSData *pushId;
+    NSString *pushId;
     if (command.arguments.count >= 1) {
         pushId = command.arguments[0];
     }
     if (pushId) {
-        [[InsertManager sharedManager] setPushId:pushId];
+        [[InsertManager sharedManager] setPushId:[self restorePushId:pushId]];
         [self sendPluginResult:CDVCommandStatus_OK command:command];
     }
+}
+
+- (NSData *)restorePushId:(NSString *)pushId {
+  pushId = [pushId stringByReplacingOccurrencesOfString:@" " withString:@""];
+  NSMutableData *pushIdRestored= [[NSMutableData alloc] init];
+  unsigned char whole_byte;
+  char byte_chars[3] = {'\0','\0','\0'};
+  int i;
+  for (i = 0; i < [pushId length] / 2; i++) {
+    byte_chars[0] = [pushId characterAtIndex:i*2];
+    byte_chars[1] = [pushId characterAtIndex:i*2+1];
+    whole_byte = strtol(byte_chars, NULL, 16);
+    [pushIdRestored appendBytes:&whole_byte length:1];
+  }
+  
+  return pushIdRestored;
 }
 
 - (void)sendPluginResult:(CDVCommandStatus)status command:(CDVInvokedUrlCommand*)command {
@@ -113,9 +134,14 @@
 
 
 - (void)initWithUrl:(CDVInvokedUrlCommand *)command {
-    NSURL *url = [NSURL URLWithString:command.arguments[0]];
-    [[InsertManager sharedManager] initWithUrl:url];
-    [self sendPluginResult:CDVCommandStatus_OK command:command];
+    if (command.arguments.count >= 1) {
+        NSURL *url = [NSURL URLWithString:command.arguments[0]];
+        [[InsertManager sharedManager] initWithUrl:url];
+        [self sendPluginResult:CDVCommandStatus_OK command:command];
+    }
+    else {
+        [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"Missing attributes"];
+    }
 }
 
 
