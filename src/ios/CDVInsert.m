@@ -31,7 +31,7 @@
         [self sendPluginResult:CDVCommandStatus_OK command:command];
 }
 
-- (void)setVisitor:(CDVInvokedUrlCommand *)command {
+- (void)setNewVisitor:(CDVInvokedUrlCommand *)command {
     if (command.arguments.count >= 2) {
         NSString *visitorId = command.arguments[0];
         NSString *accountId = command.arguments[1];
