@@ -86,7 +86,7 @@ public class Insert extends CordovaPlugin {
                     visitorId = visitorId.toString();
                 }
                 if (accountId != null) {
-                    accountId = inputs.get(1).toString();
+                    accountId = accountId.toString();
                 }
                 Map<String, String> userAttributes = null;
                 if (userAttributesJSON != null) {
