@@ -17,7 +17,9 @@ import static sdk.insert.io.Insert.initSDK;
 import static sdk.insert.io.Insert.InsertInitParams;
 import static sdk.insert.io.Insert.InsertOptions;
 import static sdk.insert.io.Insert.dismissVisibleInserts;
+import static sdk.insert.io.Insert.clearVisitor;
 import static sdk.insert.io.Insert.eventOccurred;
+import static sdk.insert.io.Insert.setNewVisitor;
 import static sdk.insert.io.Insert.setUserAttributes;
 import static sdk.insert.io.Insert.setPushId;
 import static sdk.insert.io.InsertPushHandler.handleInsertPush;
@@ -72,6 +74,26 @@ public class Insert extends CordovaPlugin {
         } else if (action.equals("dismissVisibleInserts")) {
             dismissVisibleInserts();
             callbackContext.success();
+        } else if (action.equals("clearVisitor")) {
+            clearVisitor();
+            callbackContext.success();
+        } else if(action.equals("setNewVisitor")) {
+            if (inputs.length() >=3) {
+                String visitorId = inputs.get(0);
+                String accountId = inputs.get(1);
+                JSONObject userAttributesJSON = inputs.getJSONObject(2);
+                if (visitorId != null) {
+                    visitorId = visitorId.toString();
+                }
+                if (accountId != null) {
+                    accountId = accountId.toString();
+                }
+                Map<String, String> userAttributes = null;
+                if (userAttributesJSON != null) {
+                    userAttributes = toMap(userAttributesJSON);
+                }
+                setNewVisitor(visitorId, accountId, userAttributes);
+            }
         } else if (action.equals("handleInsertPush")) {
             if (inputs.length() > 0) {
                 handleInsertPush(inputs.get(0));
