@@ -136,6 +136,21 @@ module.exports = {
       [ensureStringValues(attributes)]
     );
   },
+  setNewVisitor: function(visitorId, accountId, attributes, success, error) {
+    if (typeof visitorId === 'string' && typeof accountId === 'string') {
+      cordova.exec(
+        success,
+        error,
+        "Insert",
+        "setNewVisitor",
+        [visitorId, accountId, ensureStringValues(attributes)]
+      );
+     } else {
+       if (typeof error === 'function') {
+         error('type missmatch: visitorId and accountId should be of type string');
+       }
+    }
+  },
   /**
    * handle insert push.
    * 
@@ -174,7 +189,7 @@ module.exports = {
       );
      } else {
        if (typeof error === 'function') {
-         error('type missmatch: pushId should be of type string')
+         error('type missmatch: pushId should be of type string');
        }
     }
   }
