@@ -31,6 +31,17 @@
         [self sendPluginResult:CDVCommandStatus_OK command:command];
 }
 
+- (void)setVisitor:(CDVInvokedUrlCommand *)command {
+    if (command.arguments.count >= 2) {
+        NSString *visitorId = command.arguments[0];
+        NSString *accountId = command.arguments[1];
+        [[InsertManager sharedManager] setVisitor:visitorId accountId:accountId];
+        [self sendPluginResult:CDVCommandStatus_OK command:command];
+    } else {
+        [self sendPluginResult:CDVCommandStatus_ERROR command:command message:@"Expecting 2 arguments: visitorId, accountId"];
+    }
+}
+
 - (void)eventOccurred:(CDVInvokedUrlCommand *)command {
     if (command.arguments.count >= 2) {
         NSString *actionName = command.arguments[0];
