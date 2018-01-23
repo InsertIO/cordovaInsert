@@ -79,9 +79,9 @@ public class Insert extends CordovaPlugin {
             callbackContext.success();
         } else if(action.equals("setNewVisitor")) {
             if (inputs.length() >=3) {
-                String visitorId = inputs.get(0);
-                String accountId = inputs.get(1);
-                JSONObject userAttributesJSON = inputs.getJSONObject(2);
+                String visitorId = (String) inputs.get(0);
+                String accountId = (String) inputs.get(1);
+                JSONObject userAttributesJSON = (JSONObject) inputs.getJSONObject(2);
                 if (visitorId != null) {
                     visitorId = visitorId.toString();
                 }
