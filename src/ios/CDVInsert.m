@@ -26,6 +26,10 @@
     [self sendPluginResult:CDVCommandStatus_OK command:command];
 }
 
+- (void)clearVisitor:(CDVInvokedUrlCommand* )command {
+        [[InsertManager sharedManager] clearVisitor];
+        [self sendPluginResult:CDVCommandStatus_OK command:command];
+}
 
 - (void)eventOccurred:(CDVInvokedUrlCommand *)command {
     if (command.arguments.count >= 2) {

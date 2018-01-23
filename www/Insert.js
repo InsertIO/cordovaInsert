@@ -78,6 +78,24 @@ module.exports = {
   },
 
   /**
+   * Clears visitor information.
+   * 
+   * Must be called <b>after</b> the SDK was initialized.
+   * @brief Clears the current visitor.
+   * @param {function} [success]
+   * @param {function} [error]
+   */
+  clearVisitor: function(success, error) {
+    cordova.exec(
+        success,
+        error,
+        'Insert',
+        'dismissVisibleInserts',
+        []
+    );
+  },
+
+  /**
    * Sends an event to Insert.
    * 
    * You have to register events first in your Insert dashboard.
