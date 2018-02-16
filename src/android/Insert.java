@@ -19,7 +19,7 @@ import static sdk.insert.io.Insert.InsertOptions;
 import static sdk.insert.io.Insert.dismissVisibleInserts;
 import static sdk.insert.io.Insert.clearVisitor;
 import static sdk.insert.io.Insert.eventOccurred;
-import static sdk.insert.io.Insert.setNewVisitor;
+import static sdk.insert.io.Insert.setVisitor;
 import static sdk.insert.io.Insert.setUserAttributes;
 import static sdk.insert.io.Insert.setPushId;
 import static sdk.insert.io.InsertPushHandler.handleInsertPush;
@@ -92,7 +92,7 @@ public class Insert extends CordovaPlugin {
                 if (userAttributesJSON != null) {
                     userAttributes = toMap(userAttributesJSON);
                 }
-                setNewVisitor(visitorId, accountId, userAttributes);
+                setVisitor(visitorId, accountId, userAttributes);
             }
         } else if (action.equals("handleInsertPush")) {
             if (inputs.length() > 0) {
