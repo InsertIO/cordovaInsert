@@ -4,7 +4,7 @@
 The purpose of this code is to allow hybrid applications to use the native Pendo Mobile SDK (formerly Insert SDK). Using the Pendo Mobile SDK together with this plug-in allows a hybrid app to trigger inserts using custom code.
 
 # Important Deprecation Note
-Please note that this Cordova Plug-in is no longer recommended for use. Pendo customers using Cordova are encouraged to use the Pendo Agent solution. For more information please go to the [https://help.pendo.io/resources/support-library/installation/pendo-install-client-side-data.html] Pendo Help Center
+Please note that this Cordova Plug-in is no longer recommended for use. Pendo customers using Cordova are encouraged to use the Pendo Agent solution. For more information please go to the Pendo Help Center at https://help.pendo.io/resources/support-library/installation/pendo-install-client-side-data.html
 
 # Preconditions
 
