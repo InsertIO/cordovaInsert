@@ -1,9 +1,10 @@
 # Cordova Plugin For Insert Framework
 
 
-The purpose of this code is to allow hybrid applications to use the native insert SDK. Using the Insert SDK together with this plug-in allows a hybrid app to trigger inserts using custom code.
+The purpose of this code is to allow hybrid applications to use the native Pendo Mobile SDK (formerly Insert SDK). Using the Pendo Mobile SDK together with this plug-in allows a hybrid app to trigger inserts using custom code.
 
-Register for an insert account at [https://insert.io](https://insert.io)
+# Important Deprecation Note
+Please note that this Cordova Plug-in is no longer recommended for use. Pendo customers using Cordova are encouraged to use the Pendo Agent solution. For more information please go to the [https://help.pendo.io/resources/support-library/installation/pendo-install-client-side-data.html] Pendo Help Center
 
 # Preconditions
 
@@ -73,7 +74,7 @@ initSDK:@"IOS_APP_KEY" companyName: @"COMPANY_NAME"];
 This also shows your `COMPANY_NAME` again.
 
 
-Adding the Insert SDK to your Cordova app
+Adding the Pendo Mobile SDK to your Cordova app
 =========================================
 
 ```
